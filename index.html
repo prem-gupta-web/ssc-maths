@@ -976,20 +976,128 @@
                     <div class="popular-badge">New</div>
                     <h3><i class="fas fa-percentage"></i> Percentage Masterclass</h3>
                    <!-- In the VIDEO LECTURES section, replace the existing video containers with this: -->
-<div class="video-container">
-    <div class="video-wrapper">
-        <iframe 
-            width="100%" 
-            height="100%"
-            src="https://www.youtube.com/embed/videoseries?list=PLEWzsmMUgZzCrcvtpEx8pq3M6touoIxTJ&playsinline=1&rel=0&modestbranding=1"
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen
-            loading="lazy"
-            title="Percentage Masterclass Video Lecture">
-        </iframe>
-    </div>
-</div>                    <div class="lecture-meta">
+<div class="video-lecture-container">
+  <div class="lecture-video-wrapper">
+    <iframe 
+      src="https://www.youtube.com/embed/videoseries?list=YOUR_PLAYLIST_ID&enablejsapi=1&playsinline=1&rel=0&modestbranding=1&showinfo=0&controls=1"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      loading="lazy"
+      title="Lecture Video Player"
+      class="youtube-lecture-player">
+    </iframe>
+  </div>
+  <div class="lecture-controls">
+    <button class="control-btn prev-btn" aria-label="Previous video">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <span class="video-counter">1/6</span>
+    <button class="control-btn next-btn" aria-label="Next video">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+</div>
+
+<style>
+  /* Video Lecture Container Styles */
+  .video-lecture-container {
+    position: relative;
+    width: 100%;
+    margin: 15px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .lecture-video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    background: #000;
+  }
+
+  .lecture-video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* Playlist Controls */
+  .lecture-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: var(--primary-color);
+    color: white;
+  }
+
+  .control-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .control-btn:hover {
+    background: var(--accent-color);
+    transform: scale(1.1);
+  }
+
+  .video-counter {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  /* Mobile Optimization */
+  @media (max-width: 768px) {
+    .video-lecture-container {
+      border-radius: 8px;
+    }
+    
+    .lecture-controls {
+      padding: 10px 12px;
+    }
+    
+    .control-btn {
+      width: 36px;
+      height: 36px;
+      font-size: 0.9rem;
+    }
+    
+    /* Force YouTube to show native controls on mobile */
+    .lecture-video-wrapper iframe {
+      height: calc(100% + 50px);
+      margin-bottom: -30px;
+    }
+  }
+
+  /* Small mobile devices */
+  @media (max-width: 480px) {
+    .lecture-controls {
+      padding: 8px 10px;
+    }
+    
+    .control-btn {
+      width: 32px;
+      height: 32px;
+    }
+    
+    .video-counter {
+      font-size: 0.8rem;
+    }
+  }
+</style>                   <div class="lecture-meta">
                         <span class="lecture-duration"><i class="fas fa-clock"></i> 45 min</span>
                         <span class="lecture-level"><i class="fas fa-signal"></i> Beginner</span>
                     </div>
@@ -1236,5 +1344,56 @@
             }
         });
     </script>
+    <script>
+  // YouTube API and playlist control logic
+  document.addEventListener('DOMContentLoaded', function() {
+    const players = document.querySelectorAll('.youtube-lecture-player');
+    
+    // Load YouTube API
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    
+    // Player array
+    let ytPlayers = [];
+    
+    // Initialize players
+    function onYouTubeIframeAPIReady() {
+      players.forEach((player, index) => {
+        ytPlayers[index] = new YT.Player(player, {
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      });
+    }
+    
+    function onPlayerReady(event) {
+      // Player is ready
+    }
+    
+    function onPlayerStateChange(event) {
+      // Handle state changes
+    }
+    
+    // Custom controls functionality
+    document.querySelectorAll('.prev-btn').forEach((btn, index) => {
+      btn.addEventListener('click', () => {
+        ytPlayers[index].previousVideo();
+      });
+    });
+    
+    document.querySelectorAll('.next-btn').forEach((btn, index) => {
+      btn.addEventListener('click', () => {
+        ytPlayers[index].nextVideo();
+      });
+    });
+    
+    // Make the function global
+    window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+  });
+</script>
 </body>
 </html>
