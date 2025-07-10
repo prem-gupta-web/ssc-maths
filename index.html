@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Maths Portal - Arithmetic & Advanced Mathematics</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -17,6 +17,12 @@
             --danger-color: #e74c3c;
             --card-shadow: 0 4px 6px rgba(0,0,0,0.1);
             --card-hover-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            --mobile-breakpoint: 768px;
+        }
+        
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
         
         body {
@@ -63,7 +69,7 @@
             font-style: italic;
             opacity: 0.9;
             font-size: 1.1em;
-            margin-top: 10px;
+            margin-top: 12px;
             position: relative;
             font-weight: 300;
         }
@@ -100,13 +106,14 @@
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            font-size: 0.9em;
+            font-size: 0.95em;
             white-space: nowrap;
         }
         
-        nav a:hover {
+        nav a:hover, nav a:focus {
             background-color: rgba(255,255,255,0.2);
             transform: translateY(-2px);
+            outline: none;
         }
         
         nav a i {
@@ -117,12 +124,12 @@
         main {
             max-width: 1400px;
             margin: 30px auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
         
         .math-section {
             background-color: white;
-            border-radius: 12px;
+            border-radius: 10px;
             box-shadow: var(--card-shadow);
             padding: 25px;
             margin-bottom: 30px;
@@ -131,7 +138,7 @@
         }
         
         .math-section:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             box-shadow: var(--card-hover-shadow);
         }
         
@@ -142,7 +149,7 @@
             margin-top: 0;
             display: flex;
             align-items: center;
-            font-size: 1.5em;
+            font-size: 1.6em;
             margin-bottom: 20px;
         }
         
@@ -181,7 +188,7 @@
         }
         
         .topic-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             box-shadow: var(--card-hover-shadow);
             border-color: var(--accent-color);
         }
@@ -202,9 +209,9 @@
         }
         
         .topic-card h4 {
-            margin: 15px 0 8px;
+            margin: 15px 0 6px;
             color: var(--secondary-color);
-            font-size: 0.9em;
+            font-size: 0.95em;
         }
         
         .topic-card a {
@@ -213,13 +220,14 @@
             font-weight: 600;
             transition: color 0.2s;
             display: inline-block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-size: 0.9em;
         }
         
-        .topic-card a:hover {
+        .topic-card a:hover, .topic-card a:focus {
             color: var(--accent-color);
             text-decoration: underline;
+            outline: none;
         }
         
         .topic-card a i {
@@ -236,6 +244,7 @@
             border-left: 4px solid var(--accent-color);
             position: relative;
             line-height: 1.6;
+            overflow-x: auto;
         }
         
         .formula::before {
@@ -279,7 +288,7 @@
         
         .search-box input:focus {
             border-color: var(--accent-color);
-            box-shadow: 0 0 15px rgba(52, 152, 219, 0.2);
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
         }
         
         .search-box i {
@@ -304,18 +313,20 @@
             justify-content: center;
             margin-bottom: 20px;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 10px;
         }
         
         .footer-links a {
             color: white;
+            margin: 0 10px;
             text-decoration: none;
             transition: color 0.3s;
             font-size: 0.95em;
         }
         
-        .footer-links a:hover {
+        .footer-links a:hover, .footer-links a:focus {
             color: var(--accent-color);
+            outline: none;
         }
         
         .social-icons {
@@ -330,9 +341,10 @@
             display: inline-block;
         }
         
-        .social-icons a:hover {
+        .social-icons a:hover, .social-icons a:focus {
             color: var(--accent-color);
             transform: translateY(-3px);
+            outline: none;
         }
         
         .back-to-top {
@@ -352,15 +364,18 @@
             opacity: 0;
             transition: all 0.3s;
             z-index: 99;
+            border: none;
+            cursor: pointer;
         }
         
         .back-to-top.visible {
             opacity: 1;
         }
         
-        .back-to-top:hover {
+        .back-to-top:hover, .back-to-top:focus {
             background: var(--secondary-color);
-            transform: translateY(-5px);
+            transform: translateY(-3px);
+            outline: none;
         }
 
         /* Video container styles */
@@ -429,9 +444,9 @@
         
         .resource-buttons {
             display: flex;
+            flex-wrap: wrap;
             gap: 10px;
             margin-top: 15px;
-            flex-wrap: wrap;
         }
         
         .resource-button {
@@ -449,15 +464,15 @@
             white-space: nowrap;
         }
         
-        .resource-button:hover {
+        .resource-button:hover, .resource-button:focus {
             background-color: #e1f0ff;
             transform: translateY(-2px);
             box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            outline: none;
         }
         
         .resource-button i {
             margin-right: 6px;
-            font-size: 0.9em;
         }
         
         /* New badge for popular topics */
@@ -473,128 +488,27 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             z-index: 1;
         }
-
-        /* GitHub banner */
-        .github-banner {
-            position: fixed;
-            top: 0;
-            right: 0;
-            z-index: 1000;
-        }
-
-        .github-banner a {
-            display: flex;
-            align-items: center;
-            padding: 8px 12px 8px 8px;
-            background-color: #24292e;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9em;
-            border-bottom-left-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .github-banner a:hover {
-            background-color: #3a4046;
-        }
-
-        .github-banner i {
-            margin-right: 6px;
-            font-size: 1.2em;
-        }
-
+        
         /* Mobile menu toggle */
-        .mobile-menu-toggle {
+        .menu-toggle {
             display: none;
             background: none;
             border: none;
             color: white;
             font-size: 1.5em;
-            padding: 10px;
             cursor: pointer;
+            padding: 10px;
+            margin-left: auto;
         }
-
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
-                position: absolute;
-                top: 10px;
-                right: 15px;
-            }
-
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                display: none;
-                padding: 10px 0;
-            }
-
-            nav ul.active {
-                display: flex;
-            }
-
-            nav li {
-                margin: 5px 0;
-                width: 100%;
-                text-align: center;
-            }
-
-            nav a {
-                justify-content: center;
-                border-radius: 0;
-                padding: 10px;
-            }
-
-            h1 {
-                font-size: 1.8em;
-            }
-
-            .subtitle {
-                font-size: 1em;
-            }
-
-            .math-section {
-                padding: 20px 15px;
-                margin-bottom: 25px;
-            }
-
-            .topic-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .search-box input {
-                padding: 10px 15px;
-                padding-left: 40px;
-                font-size: 0.95em;
-            }
-
-            .search-box i {
-                left: 12px;
-                font-size: 1em;
-            }
-
-            .github-banner {
-                position: absolute;
-                top: 10px;
-                left: 10px;
-                right: auto;
-            }
-
-            .github-banner a {
-                padding: 6px 10px 6px 6px;
-                font-size: 0.8em;
-            }
-        }
-
+        
         /* Animation classes */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
         .animate-fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
+            animation: fadeIn 0.5s ease-out forwards;
         }
         
         .delay-1 { animation-delay: 0.1s; }
@@ -602,38 +516,170 @@
         .delay-3 { animation-delay: 0.3s; }
         .delay-4 { animation-delay: 0.4s; }
         .delay-5 { animation-delay: 0.5s; }
+        
+        /* Mobile-specific styles */
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 15px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .subtitle {
+                font-size: 1em;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                display: none;
+                padding: 10px 0;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav li {
+                margin: 5px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            nav a {
+                padding: 10px;
+                border-radius: 0;
+                justify-content: center;
+            }
+            
+            .math-section {
+                padding: 20px;
+                margin-bottom: 25px;
+            }
+            
+            .math-section h2 {
+                font-size: 1.4em;
+            }
+            
+            .topic-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .search-box input {
+                padding: 10px 15px;
+                padding-left: 40px;
+                font-size: 0.95em;
+            }
+            
+            .search-box i {
+                left: 12px;
+                font-size: 1em;
+            }
+            
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .formula {
+                font-size: 0.9em;
+                padding: 12px;
+            }
+            
+            .resource-button {
+                padding: 5px 10px;
+                font-size: 0.8em;
+            }
+        }
+        
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+            header {
+                padding: 25px 10px;
+            }
+            
+            h1 {
+                font-size: 1.6em;
+            }
+            
+            .math-section {
+                padding: 15px;
+            }
+            
+            .math-section h2 {
+                font-size: 1.3em;
+            }
+            
+            .topic-card {
+                padding: 15px;
+            }
+            
+            .formula {
+                font-size: 0.85em;
+            }
+            
+            footer {
+                padding: 20px 15px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .footer-links a {
+                margin: 0;
+            }
+        }
+        
+        /* Accessibility improvements */
+        a:focus, button:focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Prevent layout shift when scrollbar appears */
+        body {
+            overflow-y: scroll;
+        }
     </style>
 </head>
 <body>
-    <!-- GitHub Banner -->
-    <div class="github-banner">
-        <a href="https://github.com/yourusername/maths-portal" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-github"></i> View on GitHub
-        </a>
-    </div>
-    
     <header>
         <h1>Mathematics Learning Portal</h1>
         <p class="subtitle">Master arithmetic and advanced mathematical concepts</p>
     </header>
     
     <nav>
-        <button class="mobile-menu-toggle" id="menuToggle">
+        <button class="menu-toggle" aria-label="Toggle menu">
             <i class="fas fa-bars"></i>
         </button>
-        <ul id="navMenu">
+        <ul id="nav-menu">
             <li><a href="#arithmetic"><i class="fas fa-calculator"></i> Arithmetic</a></li>
             <li><a href="#advanced"><i class="fas fa-square-root-alt"></i> Advanced Maths</a></li>
             <li><a href="#formulas"><i class="fas fa-key"></i> Key Formulas</a></li>
             <li><a href="#lectures"><i class="fas fa-chalkboard-teacher"></i> Lectures</a></li>
-            <li><a href="https://github.com/yourusername/maths-portal" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
         </ul>
     </nav>
     
     <div class="search-container">
         <div class="search-box">
             <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search topics, formulas, or concepts...">
+            <input type="text" placeholder="Search topics, formulas, or concepts..." aria-label="Search mathematics content">
         </div>
     </div>
     
@@ -649,36 +695,411 @@
                     <p>Calculating parts per hundred and their applications in finance, statistics, and everyday life.</p>
                     <div class="formula">Percentage = (Part/Whole) × 100<br>Percentage Change = (New - Original)/Original × 100</div>
                     <div class="resource-buttons">
-                        <a href="https://github.com/yourusername/maths-portal/blob/main/resources/percentage-class-sheet.pdf" class="resource-button" download>
-                            <i class="fas fa-file-pdf"></i> Class Sheet
-                        </a>
-                        <a href="https://github.com/yourusername/maths-portal/blob/main/resources/percentage-notes.pdf" class="resource-button">
-                            <i class="fas fa-file-alt"></i> Notes
-                        </a>
-                        <a href="https://github.com/yourusername/maths-portal/blob/main/exercises/percentage-practice.pdf" class="resource-button">
-                            <i class="fas fa-pen-fancy"></i> Practice
-                        </a>
+                        <a href="#" class="resource-button"><i class="fas fa-file-pdf"></i> Class Sheet</a>
+                        <a href="#" class="resource-button"><i class="fas fa-file-alt"></i> Notes</a>
+                        <a href="#" class="resource-button"><i class="fas fa-pen-fancy"></i> Practice</a>
                     </div>
                 </div>
                 
-                <!-- Other topic cards with similar GitHub links -->
-                <!-- ... -->
+                <div class="topic-card animate-fade-in delay-2">
+                    <h3><i class="fas fa-money-bill-wave"></i> Profit, Loss & Discount</h3>
+                    <p>Business mathematics concepts for financial calculations including markups, markdowns, and sales pricing.</p>
+                    <div class="formula">Profit = Selling Price - Cost Price<br>Loss = Cost Price - Selling Price<br>Discount = Marked Price - Selling Price</div>
+                    <div class="resource-buttons">
+                        <a href="#" class="resource-button"><i class="fas fa-file-pdf"></i> Class Sheet</a>
+                        <a href="#" class="resource-button"><i class="fas fa-file-alt"></i> Notes</a>
+                    </div>
+                </div>
                 
+                <div class="topic-card animate-fade-in delay-3">
+                    <h3><i class="fas fa-balance-scale"></i> Average</h3>
+                    <p>Central value of a data set calculated by sum of values divided by count, with applications in statistics.</p>
+                    <div class="formula">Average = (Sum of terms)/(Number of terms)<br>Weighted Average = Σ(weight × value)/Σweights</div>
+                    <div class="resource-buttons">
+                        <a href="#" class="resource-button"><i class="fas fa-file-pdf"></i> Class Sheet</a>
+                    </div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-1">
+                    <div class="popular-badge">Popular</div>
+                    <h3><i class="fas fa-user-clock"></i> Age Problems</h3>
+                    <p>Solving problems related to ages of people at different times using linear equations.</p>
+                    <div class="formula">If A is x years older than B, and B is y years old now:<br>A's age = y + x<br>Ratio of ages = (y + x)/(y)</div>
+                    <div class="resource-buttons">
+                        <a href="#" class="resource-button"><i class="fas fa-file-pdf"></i> Class Sheet</a>
+                        <a href="#" class="resource-button"><i class="fas fa-pen-fancy"></i> Practice</a>
+                    </div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-2">
+                    <h3><i class="fas fa-divide"></i> Ratio & Proportion</h3>
+                    <p>Comparative relationship between quantities and solving problems using proportional relationships.</p>
+                    <div class="formula">a:b = c:d ⇒ a×d = b×c<br>Compound Ratio = (a×c):(b×d)</div>
+                    <div class="resource-buttons">
+                        <a href="#" class="resource-button"><i class="fas fa-file-pdf"></i> Class Sheet</a>
+                        <a href="#" class="resource-button"><i class="fas fa-file-alt"></i> Notes</a>
+                    </div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-3">
+                    <h3><i class="fas fa-handshake"></i> Partnership</h3>
+                    <p>Business arrangements where partners share profits and losses based on investment ratios.</p>
+                    <div class="formula">Profit share ratio = Investment × Time period<br>Capital Ratio = (Investment₁ × Time₁):(Investment₂ × Time₂)</div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-1">
+                    <h3><i class="fas fa-flask"></i> Mixture & Alligation</h3>
+                    <p>Techniques for solving mixture problems and weighted averages in chemistry and finance.</p>
+                    <div class="formula">Alligation rule: (Cheaper quantity)/(Dearer quantity) = (d - m)/(m - c)<br>where m = mean price, d = dearer price, c = cheaper price</div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-2">
+                    <div class="popular-badge">Popular</div>
+                    <h3><i class="fas fa-coins"></i> Simple & Compound Interest</h3>
+                    <p>Calculating interest on loans and investments with different compounding periods.</p>
+                    <div class="formula">SI = P×R×T/100<br>CI = P(1+R/100)<sup>n</sup>-P<br>A = P(1 + r/n)<sup>nt</sup></div>
+                    <div class="resource-buttons">
+                        <a href="#" class="resource-button"><i class="fas fa-file-pdf"></i> Class Sheet</a>
+                        <a href="#" class="resource-button"><i class="fas fa-file-alt"></i> Notes</a>
+                        <a href="#" class="resource-button"><i class="fas fa-pen-fancy"></i> Practice</a>
+                    </div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-3">
+                    <h3><i class="fas fa-clock"></i> Time & Work</h3>
+                    <p>Problems involving work rates and time management for project planning.</p>
+                    <div class="formula">Work = Rate × Time<br>Combined work rate = Sum of individual rates<br>Efficiency Ratio = Work₁:Work₂</div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-1">
+                    <h3><i class="fas fa-faucet"></i> Pipe & Cistern</h3>
+                    <p>Problems related to filling and emptying tanks with multiple inlets and outlets.</p>
+                    <div class="formula">Net work done = Sum of filling rates - Sum of emptying rates<br>Time = 1/(Net Rate)</div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-2">
+                    <div class="popular-badge">Popular</div>
+                    <h3><i class="fas fa-tachometer-alt"></i> Time, Speed & Distance</h3>
+                    <p>Relationship between motion parameters with applications in physics and transportation.</p>
+                    <div class="formula">Speed = Distance/Time<br>Average speed = Total distance/Total time<br>Relative speed = Sum/Difference of speeds</div>
+                    <div class="resource-buttons">
+                        <a href="#" class="resource-button"><i class="fas fa-file-pdf"></i> Class Sheet</a>
+                        <a href="#" class="resource-button"><i class="fas fa-pen-fancy"></i> Practice</a>
+                    </div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-3">
+                    <h3><i class="fas fa-ship"></i> Boats & Streams</h3>
+                    <p>Problems involving boats moving with and against currents in rivers and streams.</p>
+                    <div class="formula">Downstream speed = Boat speed + Stream speed<br>Upstream speed = Boat speed - Stream speed<br>Boat speed = (Downstream + Upstream)/2</div>
+                </div>
             </div>
         </section>
         
-        <!-- Other sections with similar improvements -->
-        <!-- ... -->
+        <section id="advanced" class="math-section animate-fade-in">
+            <h2><i class="fas fa-square-root-alt"></i> ADVANCED MATHS</h2>
+            <p class="section-intro">Higher-level mathematical concepts for academic and competitive examinations. These topics build upon arithmetic fundamentals to solve more complex problems.</p>
+            
+            <div class="topic-grid">
+                <div class="topic-card animate-fade-in delay-1">
+                    <h3><i class="fas fa-sort-numeric-up"></i> Number System</h3>
+                    <p>Classification and properties of numbers (integers, rationals, primes) and their applications.</p>
+                    <div class="formula">Even: 2n, Odd: 2n+1<br>Prime: divisible only by 1 and itself<br>GCD × LCM = Product of numbers</div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-2">
+                    <div class="popular-badge">Popular</div>
+                    <h3><i class="fas fa-superscript"></i> LCM & HCF</h3>
+                    <p>Least common multiples and highest common factors with applications in fraction simplification.</p>
+                    <div class="formula">LCM × HCF = Product of numbers<br>HCF of fractions = HCF of numerators/LCM of denominators<br>LCM of fractions = LCM of numerators/HCF of denominators</div>
+                    <div class="resource-buttons">
+                        <a href="#" class="resource-button"><i class="fas fa-file-pdf"></i> Class Sheet</a>
+                        <a href="#" class="resource-button"><i class="fas fa-file-alt"></i> Notes</a>
+                        <a href="#" class="resource-button"><i class="fas fa-pen-fancy"></i> Practice</a>
+                    </div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-3">
+                    <h3><i class="fas fa-compress-alt"></i> Simplification</h3>
+                    <p>Techniques for simplifying complex expressions using algebraic identities.</p>
+                    <div class="formula">BODMAS rule: Brackets, Orders, Division, Multiplication, Addition, Subtraction<br>(a+b)² = a² + 2ab + b²<br>(a-b)² = a² - 2ab + b²</div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-1">
+                    <div class="popular-badge">Popular</div>
+                    <h3><i class="fas fa-x-ray"></i> Algebra</h3>
+                    <p>Study of mathematical symbols and rules for manipulating equations and expressions.</p>
+                    <div class="formula">Quadratic: ax² + bx + c = 0<br>x = [-b ± √(b² - 4ac)]/2a<br>(a+b)³ = a³ + b³ + 3ab(a+b)</div>
+                    <div class="resource-buttons">
+                        <a href="#" class="resource-button"><i class="fas fa-file-pdf"></i> Class Sheet</a>
+                        <a href="#" class="resource-button"><i class="fas fa-pen-fancy"></i> Practice</a>
+                    </div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-2">
+                    <h3><i class="fas fa-project-diagram"></i> Trigonometry</h3>
+                    <p>Relationships between angles and sides of triangles with periodic functions.</p>
+                    <div class="formula">sin²θ + cos²θ = 1<br>1 + tan²θ = sec²θ<br>sin(A+B) = sinAcosB + cosAsinB</div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-3">
+                    <h3><i class="fas fa-mountain"></i> Height & Distance</h3>
+                    <p>Applications of trigonometry to measure heights and distances in surveying and navigation.</p>
+                    <div class="formula">tanθ = Opposite/Adjacent<br>Angle of elevation: Looking up<br>Angle of depression: Looking down</div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-1">
+                    <div class="popular-badge">Popular</div>
+                    <h3><i class="fas fa-shapes"></i> Geometry</h3>
+                    <p>Properties and relations of points, lines, surfaces, and solids in Euclidean space.</p>
+                    <div class="formula">Sum of interior angles = (n-2)×180°<br>Pythagoras: a² + b² = c²<br>Area of triangle = ½ × base × height</div>
+                    <div class="resource-buttons">
+                        <a href="#" class="resource-button"><i class="fas fa-file-pdf"></i> Class Sheet</a>
+                        <a href="#" class="resource-button"><i class="fas fa-file-alt"></i> Notes</a>
+                    </div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-2">
+                    <h3><i class="fas fa-ruler-combined"></i> Mensuration (2D & 3D)</h3>
+                    <p>Measurement of geometric figures and their parameters like area, volume, and surface area.</p>
+                    <div class="formula">Circle: A=πr², C=2πr<br>Sphere: V=(4/3)πr³, A=4πr²<br>Cylinder: V=πr²h, A=2πr(h+r)</div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-3">
+                    <h3><i class="fas fa-map-marked-alt"></i> Coordinate Geometry</h3>
+                    <p>Algebraic representation of geometric figures using coordinate systems.</p>
+                    <div class="formula">Distance = √[(x₂-x₁)² + (y₂-y₁)²]<br>Midpoint = ((x₁+x₂)/2, (y₁+y₂)/2)<br>Slope m = (y₂-y₁)/(x₂-x₁)</div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-1">
+                    <h3><i class="fas fa-chart-bar"></i> Statistics</h3>
+                    <p>Collection, analysis, interpretation of numerical data for decision making.</p>
+                    <div class="formula">Mean = Σx/n<br>Median = Middle value<br>Mode = Most frequent value<br>Variance = Σ(x-μ)²/n</div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-2">
+                    <div class="popular-badge">Popular</div>
+                    <h3><i class="fas fa-dice"></i> Probability</h3>
+                    <p>Likelihood of events occurring, fundamental for risk assessment and predictions.</p>
+                    <div class="formula">P(E) = n(E)/n(S)<br>P(A∪B) = P(A) + P(B) - P(A∩B)<br>P(A|B) = P(A∩B)/P(B)</div>
+                    <div class="resource-buttons">
+                        <a href="#" class="resource-button"><i class="fas fa-file-pdf"></i> Class Sheet</a>
+                        <a href="#" class="resource-button"><i class="fas fa-pen-fancy"></i> Practice</a>
+                    </div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-3">
+                    <h3><i class="fas fa-table"></i> Data Interpretation</h3>
+                    <p>Analyzing and making sense of data presented in tables, graphs, and charts.</p>
+                    <div class="formula">Percentage change = (New-Old)/Old×100<br>Growth Rate = (Final-Initial)/Initial×100<br>Average = ΣValues/Count</div>
+                </div>
+            </div>
+        </section>
         
+        <section id="formulas" class="math-section animate-fade-in">
+            <h2><i class="fas fa-key"></i> KEY FORMULAS CHEAT SHEET</h2>
+            <p class="section-intro">Important mathematical formulas for quick reference. Bookmark this section for exam preparation and problem-solving.</p>
+            
+            <div class="topic-grid">
+                <div class="topic-card animate-fade-in delay-1">
+                    <h3><i class="fas fa-function"></i> Quadratic Equation</h3>
+                    <div class="formula">General form: ax² + bx + c = 0<br>Solutions: x = [-b ± √(b² - 4ac)] / 2a<br>Discriminant D = b² - 4ac<br>Sum of roots = -b/a<br>Product of roots = c/a</div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-2">
+                    <h3><i class="fas fa-triangle"></i> Pythagorean Theorem</h3>
+                    <div class="formula">For right-angled triangles:<br>a² + b² = c²<br>where c is hypotenuse<br>Special triangles:<br>30-60-90: 1:√3:2<br>45-45-90: 1:1:√2</div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-3">
+                    <h3><i class="fas fa-shapes"></i> Area of Triangle</h3>
+                    <div class="formula">A = ½ × base × height<br>Heron's formula: √[s(s-a)(s-b)(s-c)]<br>where s = (a+b+c)/2<br>Using trig: A = ½ab sinC<br>Equilateral: (√3/4)a²</div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-1">
+                    <h3><i class="fas fa-calculator"></i> Compound Interest</h3>
+                    <div class="formula">A = P(1 + r/n)<sup>nt</sup><br>Where:<br>A = Final Amount<br>P = Principal<br>r = Annual rate<br>n = Compounds per year<br>t = Time in years</div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-2">
+                    <h3><i class="fas fa-route"></i> Distance Formula</h3>
+                    <div class="formula">2D: d = √[(x₂-x₁)² + (y₂-y₁)²]<br>3D: d = √[(x₂-x₁)² + (y₂-y₁)² + (z₂-z₁)²]<br>Slope m = (y₂-y₁)/(x₂-x₁)<br>Midpoint = ((x₁+x₂)/2, (y₁+y₂)/2)</div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-3">
+                    <h3><i class="fas fa-superscript"></i> Trig Identities</h3>
+                    <div class="formula">Pythagorean:<br>sin²θ + cos²θ = 1<br>1 + tan²θ = sec²θ<br>1 + cot²θ = csc²θ<br>Angle Sum:<br>sin(A±B) = sinAcosB ± cosAsinB<br>cos(A±B) = cosAcosB ∓ sinAsinB</div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="lectures" class="math-section animate-fade-in">
+            <h2><i class="fas fa-chalkboard-teacher"></i> VIDEO LECTURES</h2>
+            <p class="section-intro">Comprehensive video lectures covering all mathematical topics with detailed explanations. Watch, learn, and master each concept at your own pace.</p>
+            
+            <div class="topic-grid">
+                <div class="topic-card animate-fade-in delay-1">
+                    <div class="popular-badge">New</div>
+                    <h3><i class="fas fa-percentage"></i> Percentage Masterclass</h3>
+                    <div class="video-container">
+                        <iframe 
+                            width="100%" 
+                            height="315" 
+                            src="https://www.youtube.com/embed/videoseries?list=PLEWzsmMUgZzCrcvtpEx8pq3M6touoIxTJ" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            loading="lazy"
+                            title="Percentage Masterclass Video Lecture">
+                        </iframe>
+                    </div>
+                    <div class="lecture-meta">
+                        <span class="lecture-duration"><i class="fas fa-clock"></i> 45 min</span>
+                        <span class="lecture-level"><i class="fas fa-signal"></i> Beginner</span>
+                    </div>
+                    <p class="lecture-description">Complete guide to understanding and applying percentage calculations in real-world scenarios including discounts, interest rates, and statistical analysis.</p>
+                    <div class="resource-buttons">
+                        <a href="#" class="resource-button"><i class="fas fa-file-pdf"></i> Download Slides</a>
+                        <a href="#" class="resource-button"><i class="fas fa-file-alt"></i> Lecture Notes</a>
+                    </div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-2">
+                    <h3><i class="fas fa-superscript"></i> LCM & HCF Explained</h3>
+                    <div class="video-container">
+                        <iframe 
+                            width="100%" 
+                            height="315" 
+                            src="https://www.youtube.com/embed/videoseries?list=PLqq2wXbdcdrwYkYWBy70zf10EnNvL6sOm" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            loading="lazy"
+                            title="LCM & HCF Explained Video Lecture">
+                        </iframe>
+                    </div>
+                    <div class="lecture-meta">
+                        <span class="lecture-duration"><i class="fas fa-clock"></i> 38 min</span>
+                        <span class="lecture-level"><i class="fas fa-signal"></i> Intermediate</span>
+                    </div>
+                    <p class="lecture-description">Detailed explanation of least common multiples and highest common factors with practical examples in fraction simplification and problem solving.</p>
+                    <div class="resource-buttons">
+                        <a href="#" class="resource-button"><i class="fas fa-file-pdf"></i> Download Slides</a>
+                        <a href="#" class="resource-button"><i class="fas fa-file-alt"></i> Lecture Notes</a>
+                    </div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-3">
+                    <div class="popular-badge">Popular</div>
+                    <h3><i class="fas fa-project-diagram"></i> Trigonometry Fundamentals</h3>
+                    <div class="video-container">
+                        <iframe 
+                            width="100%" 
+                            height="315" 
+                            src="https://www.youtube.com/embed/9r6kL9X-S1g" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            loading="lazy"
+                            title="Trigonometry Fundamentals Video Lecture">
+                        </iframe>
+                    </div>
+                    <div class="lecture-meta">
+                        <span class="lecture-duration"><i class="fas fa-clock"></i> 52 min</span>
+                        <span class="lecture-level"><i class="fas fa-signal"></i> Advanced</span>
+                    </div>
+                    <p class="lecture-description">Comprehensive introduction to trigonometric concepts, identities, and their applications in wave mechanics, geometry, and physics.</p>
+                    <div class="resource-buttons">
+                        <a href="#" class="resource-button"><i class="fas fa-file-pdf"></i> Download Slides</a>
+                        <a href="#" class="resource-button"><i class="fas fa-file-alt"></i> Lecture Notes</a>
+                    </div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-1">
+                    <h3><i class="fas fa-money-bill-wave"></i> Profit & Loss Deep Dive</h3>
+                    <div class="video-container">
+                        <iframe 
+                            width="100%" 
+                            height="315" 
+                            src="https://www.youtube.com/embed/9r6kL9X-S1g" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            loading="lazy"
+                            title="Profit & Loss Deep Dive Video Lecture">
+                        </iframe>
+                    </div>
+                    <div class="lecture-meta">
+                        <span class="lecture-duration"><i class="fas fa-clock"></i> 41 min</span>
+                        <span class="lecture-level"><i class="fas fa-signal"></i> Intermediate</span>
+                    </div>
+                    <p class="lecture-description">Master the concepts of profit, loss, and discount with business case studies and examples from retail, manufacturing, and service industries.</p>
+                    <div class="resource-buttons">
+                        <a href="#" class="resource-button"><i class="fas fa-file-pdf"></i> Download Slides</a>
+                    </div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-2">
+                    <div class="popular-badge">New</div>
+                    <h3><i class="fas fa-calculator"></i> Compound Interest Workshop</h3>
+                    <div class="video-container">
+                        <iframe 
+                            width="100%" 
+                            height="315" 
+                            src="https://www.youtube.com/embed/9r6kL9X-S1g" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            loading="lazy"
+                            title="Compound Interest Workshop Video Lecture">
+                        </iframe>
+                    </div>
+                    <div class="lecture-meta">
+                        <span class="lecture-duration"><i class="fas fa-clock"></i> 47 min</span>
+                        <span class="lecture-level"><i class="fas fa-signal"></i> Advanced</span>
+                    </div>
+                    <p class="lecture-description">Learn how compound interest works and how to calculate it for investments, loans, and savings accounts with different compounding periods.</p>
+                    <div class="resource-buttons">
+                        <a href="#" class="resource-button"><i class="fas fa-file-pdf"></i> Download Slides</a>
+                        <a href="#" class="resource-button"><i class="fas fa-file-alt"></i> Lecture Notes</a>
+                    </div>
+                </div>
+                
+                <div class="topic-card animate-fade-in delay-3">
+                    <h3><i class="fas fa-shapes"></i> Geometry Essentials</h3>
+                    <div class="video-container">
+                        <iframe 
+                            width="100%" 
+                            height="315" 
+                            src="https://www.youtube.com/embed/9r6kL9X-S1g" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            loading="lazy"
+                            title="Geometry Essentials Video Lecture">
+                        </iframe>
+                    </div>
+                    <div class="lecture-meta">
+                        <span class="lecture-duration"><i class="fas fa-clock"></i> 56 min</span>
+                        <span class="lecture-level"><i class="fas fa-signal"></i> Beginner</span>
+                    </div>
+                    <p class="lecture-description">Fundamental concepts of geometry including shapes, angles, congruence, similarity, and their properties with construction techniques.</p>
+                    <div class="resource-buttons">
+                        <a href="#" class="resource-button"><i class="fas fa-file-pdf"></i> Download Slides</a>
+                        <a href="#" class="resource-button"><i class="fas fa-file-alt"></i> Lecture Notes</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
     
     <footer>
         <div class="footer-links">
-            <a href="https://github.com/yourusername/maths-portal/blob/main/ABOUT.md">About Us</a>
-            <a href="https://github.com/yourusername/maths-portal/blob/main/CONTACT.md">Contact</a>
-            <a href="https://github.com/yourusername/maths-portal/blob/main/PRIVACY.md">Privacy Policy</a>
-            <a href="https://github.com/yourusername/maths-portal/blob/main/TERMS.md">Terms of Service</a>
-            <a href="https://github.com/yourusername/maths-portal/blob/main/FAQ.md">FAQ</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">FAQ</a>
         </div>
         <p>&copy; 2023 Maths Learning Portal. All rights reserved.</p>
         <p>Designed for students and math enthusiasts worldwide.</p>
@@ -686,18 +1107,33 @@
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
             <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
             <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.youtube.com/channel/yourchannel" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
             <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/yourusername/maths-portal" aria-label="GitHub"><i class="fab fa-github"></i></a>
         </div>
     </footer>
     
-    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+    <a href="#" class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></a>
     
     <script>
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Mobile menu toggle functionality
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
         
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
@@ -715,22 +1151,6 @@
             });
         });
         
-        // Back to top button functionality
-        const backToTopButton = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('visible');
-            } else {
-                backToTopButton.classList.remove('visible');
-            }
-        });
-        
-        backToTopButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-        
         // Simple search functionality
         const searchInput = document.querySelector('.search-box input');
         
@@ -742,11 +1162,6 @@
                 const text = card.textContent.toLowerCase();
                 if (text.includes(searchTerm)) {
                     card.style.display = 'block';
-                    // Highlight matching text
-                    const regex = new RegExp(searchTerm, 'gi');
-                    card.innerHTML = card.innerHTML.replace(regex, match => 
-                        `<span style="background-color: yellow;">${match}</span>`
-                    );
                 } else {
                     card.style.display = 'none';
                 }
@@ -755,9 +1170,6 @@
 
         // Improved YouTube video embedding
         document.querySelectorAll('.video-container iframe').forEach(iframe => {
-            // Add loading="lazy" for better performance
-            iframe.setAttribute('loading', 'lazy');
-            
             // Add referrerpolicy for privacy
             iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
         });
@@ -778,6 +1190,14 @@
 
         document.querySelectorAll('.topic-card').forEach(card => {
             observer.observe(card);
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
         });
     </script>
 </body>
